@@ -3,6 +3,7 @@ import { UserContext } from "../contexts/UserContextProvider";
 import "../App.css";
 
 function DetailPage(props) {
+  console.log(props);
   const { jobsData, setJobsData } = useContext(UserContext);
   const id = props.location.state.id;
   console.log(props);

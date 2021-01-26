@@ -60,6 +60,7 @@ describe("Test input components if it renders correctly ", () => {
       pathname: "/detailpage",
       state: { id: "056eb12e-6c6d-44a7-ad91-e69133743c98" },
     };
+
     it("if it has the corret props ", () => {
       const wrapper = shallow(<Button />);
       expect(wrapper.find("renderData").props()).toStrictEqual({
@@ -67,6 +68,7 @@ describe("Test input components if it renders correctly ", () => {
         className: "tester",
       });
     });
+
     it("if it returns the correct data through props ", () => {
       const wrapper = shallow(<RenderData DataObj={[data]} />);
       expect(wrapper.find("Link").text()).toContain(data.title);
@@ -82,19 +84,14 @@ describe("Test input components if it renders correctly ", () => {
     });
   });
 
-  describe("Detail Page", () => {
-    const pro = {
-      state: { id: "056eb12e-6c6d-44a7-ad91-e69133743c98" },
-    };
-    const props = {};
-
-    it("efer", () => {
-      const history = createMemoryHistory("/detailpage");
-
-      const wrapper = shallow(
-        <DetailPage props={{ location: { state: { id: 1 } } }} />
-      );
-      console.log(wrapper.debug());
-    });
+  it("expect link to contain", () => {
+    const wrapper = shallow(<RenderData DataObj={[data]} />);
+    expect(wrapper.find("Link").text()).toContain(
+      "Expert Data Engineer (m/w/d)"
+    );
+  });
+  it("expect link to contain", () => {
+    const wrapper = shallow(<RenderData DataObj={[data]} />);
+    expect(wrapper.find("Link").text()).not.toEqual("sista Testen");
   });
 });
