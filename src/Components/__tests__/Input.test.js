@@ -53,6 +53,11 @@ describe("Test input components if it renders correctly ", () => {
       const wrapper = shallow(<Inputs />);
       expect(wrapper.find("Button").props()).toStrictEqual(test);
     });
+    it(" test ", () => {
+      const wrapper = shallow(<Inputs />);
+
+      expect(wrapper.find(".wrapperInput").hasClass("wrapperInput")).toBe(true);
+    });
   });
 
   describe("Button components", () => {
@@ -93,5 +98,10 @@ describe("Test input components if it renders correctly ", () => {
   it("expect link to contain", () => {
     const wrapper = shallow(<RenderData DataObj={[data]} />);
     expect(wrapper.find("Link").text()).not.toEqual("sista Testen");
+  });
+  it("expect ul to contain", () => {
+    const wrapper = shallow(<RenderData DataObj={[data]} />);
+    console.log(wrapper.debug());
+    expect(wrapper.find("ul").hasClass("list")).toBe(true);
   });
 });
