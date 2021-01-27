@@ -3,16 +3,12 @@ import { UserContext } from "../contexts/UserContextProvider";
 import "../App.css";
 
 function DetailPage(props) {
-  console.log(props);
-  const { jobsData, setJobsData } = useContext(UserContext);
+  const { jobsData } = useContext(UserContext);
   const id = props.location.state.id;
-  console.log(props);
 
   const data = jobsData.filter((item) => {
     return item.id == id;
   });
-
-  console.log(data);
 
   return (
     <div className="mainwrapepr">

@@ -5,12 +5,13 @@ import "../App.css";
 import { UserContext } from "../contexts/UserContextProvider";
 
 function Button({ inputValue }) {
-  const { jobsData, setJobsData, ids, setId } = useContext(UserContext);
+  const { jobsData, setJobsData } = useContext(UserContext);
 
-  const url = ` https://us-central1-wands-2017.cloudfunctions.net/githubjobs?description=${inputValue}`;
+  let search = inputValue && inputValue.split(" ").join("+");
+
+  const url = ` https://us-central1-wands-2017.cloudfunctions.net/githubjobs?description=${search}`;
 
   const ClickHandler = () => {
-    inputValue && inputValue.split(" ").join("+");
     fetch(url)
       .then((response) => response.json())
       .then((data) => setJobsData(data));
